@@ -50,6 +50,7 @@ export async function POST(req) {
   }
 
   const eventType = evt.type;
+  console.log(eventType);
   if (eventType === "user.created") {
     try {
       const user = new User({
@@ -78,7 +79,6 @@ export async function POST(req) {
   }
 
   if (eventType === "user.deleted") {
-    await resetIngress(payload.data.id);
     await User.delete({
       where: {
         externalUserId: payload.data.id,
