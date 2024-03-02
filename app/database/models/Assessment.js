@@ -1,40 +1,34 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-    externalUserId: String,
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        required: true
-    },
-    familyIncome: {
-        type: Number,
-        required: true
-    },
-    cgpa: {
-        type: String,
-        required: true
-    },
-    majorIncidence: {
-        type: String
-    },
-    gender: {
-        type: String,
-        required: true
-    },
-    year: {
-        type: Number,
-        required: true
-    }
+  externalUserId: String,
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  age: {
+    type: Number,
+  },
+  familyIncome: {
+    type: Number,
+  },
+  cgpa: {
+    type: String,
+  },
+  majorIncidence: {
+    type: String,
+  },
+  gender: {
+    type: String,
+  },
+  year: {
+    type: Number,
+  },
 });
 
-const Assessment = mongoose.models.User || mongoose.model("Assessment", schema);
+const Assessment =
+  mongoose.models.Assessment || mongoose.model("Assessment", schema);
 
 export default Assessment;
