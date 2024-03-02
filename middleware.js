@@ -10,6 +10,8 @@ export default authMiddleware({
     "/api(.*)",
     "/dashboard",
     "/assessment",
+    "/appointment",
+    "/assessment/result"
   ],
 });
 
