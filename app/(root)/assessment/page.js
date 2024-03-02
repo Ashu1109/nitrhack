@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 const page = () => {
     const router = useRouter();
 
-    
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
