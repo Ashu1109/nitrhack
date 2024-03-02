@@ -55,14 +55,14 @@ const Profile = () => {
       <div className="flex">
         <div className="flex p-4 flex-col gap-2 ">
           <div className=" p-4 border-2 border-black rounded-xl ">
-            <div className="flex gap-4 text-center justify-center items-center">
+            <div className="flex flex-col gap-4 text-center justify-center items-center">
               <Image
-                className=" overflow-hidden"
+                className=" overflow-hidden rounded-[100%]"
                 src={ProfileImg.src}
                 width={100}
                 height={100}
               />
-              <h1 className="text-xl font-bold">Sachin kumar</h1>
+              <h1 className="text-3xl font-bold">Sachin kumar</h1>
             </div>
             <h1 className="text-xl pt-4 font-bold">Contact details :</h1>
             <div className="flex pt-1 items-center gap-3">
@@ -145,8 +145,8 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className=" p-4 border-2 border-black rounded-xl ">
-            <PieChart/>
+          <div className=" p-4 w-full border-2 border-black rounded-xl ">
+            <div className=" w-[20dh]"><PieChart /></div>
           </div>
         </div>
       </div>

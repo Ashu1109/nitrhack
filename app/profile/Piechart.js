@@ -27,9 +27,9 @@ const PieChart = () => {
   };
 
   return (
-    <div>
-      <h2>Pie Chart</h2>
-      <Pie className=' w-[20dvw] h-[20dvw]' data={data}  />
+    <div  className=' w-[20dvw] h-[20dvw]'>
+      
+      <Pie  data={data}  />
     </div>
   );
 };
