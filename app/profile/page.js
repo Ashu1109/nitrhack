@@ -15,6 +15,7 @@ import {
   OrkesApiConfig,
   orkesConductorClient,
 } from "@io-orkes/conductor-javascript";
+import { UserProfile } from "@clerk/nextjs";
 
 const config = {
   keyId: "de70c6bb-b56e-4790-99ae-29009750dbd8", // optional
@@ -98,124 +99,60 @@ const Profile = ({ params }) => {
       <h1 className="text-5xl text-blue-500 p-5 font-extrabold">
         Patient details
       </h1>
-      <div className="flex">
-        <div className="flex p-4 flex-col  gap-2 ">
-          <div className=" p-4 border-2 border-black rounded-xl ">
-            <div className="flex flex-col gap-4 text-center justify-center items-center">
-              <Image
-                className=" overflow-hidden rounded-[100%]"
-                src={ProfileImg.src}
-                width={100}
-                height={100}
-              />
-              <h1 className="text-3xl font-bold">{`${arr[0].firstName} ${arr[0].lastName}`}</h1>
-            </div>
-            <h1 className="text-xl pt-4 font-bold">Contact details :</h1>
-            {/* <div className="flex pt-1 items-center gap-3"> */}
-              {/* <FaPhone className="text-2xl text-cyan-400" /> */}
-              {/* <h1 className="text-xl font-semibold text-gray-400"> */}
-                {/* {arr[0].phone} */}
-                {/* 7845961235 */}
-              {/* </h1> */}
-            {/* </div> */}
-            <div className="flex pt-1 items-center gap-3">
-              <HiOutlineMail className=" text-2xl font-extrabold text-cyan-400" />
-              <h1 className="text-xl font-semibold text-gray-400">
-                {/* {arr[0].mail} */}
-                aayushkumarhigh@gmail.com
-              </h1>
-            </div>
-            <div className="flex pt-1 items-center gap-3">
-              <IoMdHome className=" text-2xl font-extrabold text-cyan-400" />
+      <UserProfile />
+
+      <div className="flex w-full p-4 flex-col gap-2 ">
+        <div className=" p-4 w-full border-2 border-black rounded-xl ">
+          <h1 className="text-xl pt-4 font-bold">Overview :</h1>
+          <div className="flex flex-col  pt-1 items-center gap-3">
+            <div className="flex justify-between w-full items-center">
               <div className="flex flex-col">
-                <h1 className="text-xl font-semibold text-gray-400">
-                  {/* {arr[0].Address1} */}
-                  Jamshedpur
-                </h1>
-                <h1 className="text-xl font-semibold text-gray-400">
-                  {/* {arr[0].Address2} */}
-                  Jamshedpur
-                </h1>
+                <h1 className=" text-gray-800 text-xl">Gender:</h1>
+                <span className=" text-gray-400 text-md">
+                  {arr[0].gender}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <h1 className=" text-gray-800 text-xl">Age:</h1>
+                <span className=" text-gray-400 text-md">{arr[0].age}</span>
+              </div>
+              <div className="flex flex-col">
+                <h1 className=" text-gray-800 text-xl">Year</h1>
+                <span className=" text-gray-400 text-md">{arr[0].year} </span>
+              </div>
+            </div>
+            <div className="flex justify-between w-full items-center">
+              <div className="flex flex-col">
+                <h1 className=" text-gray-800 text-xl">Last visit</h1>
+                <span className=" text-gray-400 text-md">
+                  {/* {arr[0].last} */}
+                  02/03/2024
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-gray-800 text-xl">Next visit</h1>
+                <span className=" text-gray-400 text-md">
+                  {/* {arr[0].next} */}
+                  05/03/2024
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <h1 className=" text-gray-800 text-xl">Status:</h1>
+
+                {/* {arr[0].Staus} */}
+
+
+                {arr[0].doctor < 40 && <span className=" text-green-500  text-md">Good</span>}
+                {arr[0].doctor <= 65 && arr[0].doctor >= 40 && <span className=" text-yellow-500  text-md">average</span>}
+                {arr[0].doctor >= 65 && <span className=" text-red-500  text-md">Severe</span>}
+
               </div>
             </div>
           </div>
-
-           {/* <div className=" p-4 border-2 border-black rounded-xl "> */}
-            {/* <h1 className="text-3xl pb-2 pt-4 font-bold">Latest results : </h1> */}
-            {/* <div className="flex pt-1 items-center gap-3"> */}
-              {/* <FaFile className="text-2xl text-cyan-400" /> */}
-              {/* <h1 className="text-xl font-semibold text-gray-800">test.pdf</h1> */}
-            {/* </div> */}
-            {/* <div className="flex pt-1 items-center gap-3"> */}
-              {/* <FaFile className="text-2xl text-cyan-400" /> */}
-              {/* <h1 className="text-xl font-semibold text-gray-800">test2.pdf</h1> */}
-            {/* </div> */}
-            {/* <div className="flex pt-4 items-center gap-3"> */}
-
-              {/* <button */}
-                {/* type="button" */}
-                {/* onClick={() => setDisplay(true)} */}
-                {/* className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" */}
-              {/* > */}
-                {/* View All */}
-              {/* </button> */}
-            {/* </div> */}
-          {/* </div> */}
-        </div> 
-
-        <div className="flex w-full p-4 flex-col gap-2 ">
-          <div className=" p-4 w-full border-2 border-black rounded-xl ">
-            <h1 className="text-xl pt-4 font-bold">Overview :</h1>
-            <div className="flex flex-col  pt-1 items-center gap-3">
-              <div className="flex justify-between w-full items-center">
-                <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Gender:</h1>
-                  <span className=" text-gray-400 text-md">
-                    {arr[0].gender}
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Age:</h1>
-                  <span className=" text-gray-400 text-md">{arr[0].age}</span>
-                </div>
-                <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Year</h1>
-                  <span className=" text-gray-400 text-md">{arr[0].year} </span>
-                </div>
-              </div>
-              <div className="flex justify-between w-full items-center">
-                <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Last visit</h1>
-                  <span className=" text-gray-400 text-md">
-                    {/* {arr[0].last} */}
-                    02/03/2024
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <h1 className="text-gray-800 text-xl">Next visit</h1>
-                  <span className=" text-gray-400 text-md">
-                    {/* {arr[0].next} */}
-                    05/03/2024
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Status:</h1>
-                  
-                    {/* {arr[0].Staus} */}
-
-
-                    {arr[0].doctor < 40 && <span className=" text-green-500  text-md">Good</span>}
-                    {arr[0].doctor <=65 && arr[0].doctor >= 40 && <span className=" text-yellow-500  text-md">average</span>}  
-                    {arr[0].doctor >=65 && <span className=" text-red-500  text-md">Severe</span>}
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className=" p-4 w-full border-2 border-black rounded-xl ">
-            <div className=" w-[20dh]">
-              <PieChart />
-            </div>
+        </div>
+        <div className=" p-4 w-full border-2 border-black rounded-xl ">
+          <div className=" w-[20dh]">
+            <PieChart />
           </div>
         </div>
       </div>
