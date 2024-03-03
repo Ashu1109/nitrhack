@@ -156,44 +156,49 @@ const Doctor = ({ params }) => {
             <div className=" flex bg-gradient-to-r from-blue-500 to-sky-600 flex-col p-2 border-2 border-black rounded-xl">
               <h1 className="text-xl font-bold text-black">Sachin </h1>
               <p className="text-lg font-semibold text-gray-800">
-                "Dr. {arr[id].Name} offers compassionate care and expertise in
-                treating depression, ADHD, and anxiety. With a holistic
+                &quot;Dr. {arr[id].Name} offers compassionate care and expertise
+                in treating depression, ADHD, and anxiety. With a holistic
                 approach, they provide personalized treatment plans, guiding
                 patients towards healing and empowerment. Dedicated to restoring
                 mental well-being, Dr. {arr[id].Name} brings hope and relief to
-                those seeking balance and resilience."
+                those seeking balance and resilience.&quot;
               </p>
             </div>
             <div className=" flex bg-gradient-to-r from-blue-500 to-sky-600 flex-col p-2 border-2 border-black rounded-xl">
               <h1 className="text-xl font-bold text-black">Sachin </h1>
               <p className="text-lg font-semibold text-gray-800">
-                "Dr. {arr[id].Name} offers compassionate care and expertise in
-                treating depression, ADHD, and anxiety. With a holistic
+                &quot;Dr. {arr[id].Name} offers compassionate care and expertise
+                in treating depression, ADHD, and anxiety. With a holistic
                 approach, they provide personalized treatment plans, guiding
                 patients towards healing and empowerment. Dedicated to restoring
                 mental well-being, Dr. {arr[id].Name} brings hope and relief to
-                those seeking balance and resilience."
+                those seeking balance and resilience.&quot;
               </p>
             </div>
             <div className=" flex bg-gradient-to-r from-blue-500 to-sky-600 flex-col p-2 border-2 border-black rounded-xl">
               <h1 className="text-xl font-bold text-black">Sachin </h1>
               <p className="text-lg font-semibold text-gray-800">
-                "Dr. {arr[id].Name} offers compassionate care and expertise in
-                treating depression, ADHD, and anxiety. With a holistic
+                &quot;Dr. {arr[id].Name} offers compassionate care and expertise
+                in treating depression, ADHD, and anxiety. With a holistic
                 approach, they provide personalized treatment plans, guiding
                 patients towards healing and empowerment. Dedicated to restoring
                 mental well-being, Dr. {arr[id].Name} brings hope and relief to
-                those seeking balance and resilience."
+                those seeking balance and resilience.&quot;
               </p>
             </div>
           </div>
         </div>
 
-        <button onClick={handlePayment} className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-r from-indigo-400 to-cyan-400">
+        <button
+          onClick={handlePayment}
+          className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-r from-indigo-400 to-cyan-400"
+        >
           <span className="relative px-5 py-2.5 transition-all ease-in duration-75 dark:bg-gray-900 rounded-md hover:bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
             Pay Now
-            <div className="flex items-center"><LuIndianRupee/>
-            {arr[id].price}</div>
+            <div className="flex items-center">
+              <LuIndianRupee />
+              {arr[id].price}
+            </div>
           </span>
         </button>
       </div>
