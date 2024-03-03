@@ -16,15 +16,31 @@ const Result = () => {
         const data3 = JSON.parse(localStorage.getItem('adhd'));
         const data4 = JSON.parse(localStorage.getItem('doctor'));
         // Update state with the retrieved results
-
-            setAnxiety(data1);
-            setDepression(data2);
-            setAdhd(data3);
-            setDoctor(data4);
-            setLoad(1)
-
-
-    }, [load]);
+        if (storedResults) {
+            setAssessmentResults({
+              anxiety:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[10]
+                    .split(":")[1]
+                ) || 0,
+              depression:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[9]
+                    .split(":")[1]
+                ) || 0,
+              adhd:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[11]
+                    .split(":")[1]
+                ) || 0,
+            });
+            console.log(JSON.parse(JSON.stringify(storedResults)).split(","));
+        }
+        
+    }, []);
 
     return (
         <div className='flex justify-center items-center'>
