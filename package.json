@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.8",
+    "@io-orkes/conductor-javascript": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@stripe/stripe-js": "^3.0.6",
     "autoprefixer": "10.4.17",

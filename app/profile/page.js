@@ -10,41 +10,67 @@ import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import PieChart from "./Piechart"
 import axios from "axios";
+import { WorkflowExecutor } from "@io-orkes/conductor-javascript";
+import {
+  OrkesApiConfig,
+  orkesConductorClient,
+} from "@io-orkes/conductor-javascript";
+
+const config = {
+  keyId: "de70c6bb-b56e-4790-99ae-29009750dbd8", // optional
+  keySecret: "zceoDIjzsjtpMWESupsOMv80B0VFBGGADsn052uHuxUAcSY1", // optional
+  refreshTokenInterval: 0, // optional (in milliseconds) defaults to 30 minutes (30 * 60 * 1000). 0 no refresh
+  serverUrl: "https://play.orkes.io/api",
+};
+
+const clientPromise = orkesConductorClient(config);
+
 const Profile = ({ params }) => {
-  // const {id}=params;
+  const data = async () => {
+    const client = await clientPromise;
+    const excutor = new WorkflowExecutor(client);
+    const data_final = await excutor.getExecution(
+      "1dade930-f739-4a2e-93ed-fdd411c35d75"
+    );
+    return data_final;
+  };
 
   const [display, setDisplay] = useState(false);
   const [arr, setArr] = useState([
     {
-      "firstName": "Sachin",
-      "lastName": "kumar",
-      "phone": "7845961235",
-      "mail": "sachin@123.com",
-      "Address1": "Jamshedpur",
-      "Address2": "Jharkhand",
-      "gender": "Male",
-      "age": 20,
-      "year": 1,
-      "last": "28:02:2024",
-      "next": "2:03:2024",
-      "Staus": "Average"
-    }
-  ])
+      firstName: "Sachin",
+      lastName: "kumar",
+      phone: "7845961235",
+      mail: "sachin@123.com",
+      Address1: "Jamshedpur",
+      Address2: "Jharkhand",
+      gender: "Male",
+      age: 20,
+      year: 1,
+      last: "28:02:2024",
+      next: "2:03:2024",
+      Staus: "Average",
+    },
+  ]);
 
+  // useEffect(() => {
+  //   const get = async () => {
+  //     try {
+  //       const data = await axios.get("/api/getuser");
+  //       setArr(data.data.data.reverse());
+
+  //       console.log(arr, data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   get();
+  // }, []);
   useEffect(() => {
-    const get = async () => {
-      try {
-        const data = await axios.get("/api/getuser");
-        setArr(data.data.data.reverse())
-
-        console.log(arr,data)
-      } catch (error) {
-        console.log(error);
-      }
-
-    };
-    get();
-  },[])
+    data()
+      .then((res) => setArr(res.data.data))
+      .catch((err) => console.log(err));
+  });
   if (display) {
     return (
       <div className=" h-[100dvh] flex-col bg-gradient-to-r flex gap-3  from-cyan-400 to-emerald-500">
@@ -63,9 +89,7 @@ const Profile = ({ params }) => {
             Close
           </button>
         </div>
-        <div className=" pt-4 pl-2">
-
-        </div>
+        <div className=" pt-4 pl-2"></div>
       </div>
     );
   }
@@ -126,7 +150,6 @@ const Profile = ({ params }) => {
               <h1 className="text-xl font-semibold text-gray-800">test2.pdf</h1>
             </div>
             <div className="flex pt-4 items-center gap-3">
-
               <button
                 type="button"
                 onClick={() => setDisplay(true)}
@@ -144,7 +167,9 @@ const Profile = ({ params }) => {
               <div className="flex justify-between w-full items-center">
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Gender:</h1>
-                  <span className=" text-gray-400 text-md">{arr[0].gender}</span>
+                  <span className=" text-gray-400 text-md">
+                    {arr[0].gender}
+                  </span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Age:</h1>
@@ -161,27 +186,29 @@ const Profile = ({ params }) => {
                   <span className=" text-gray-400 text-md">
                     {/* {arr[0].last} */}
                     02/03/2024
-                    </span>
+                  </span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className="text-gray-800 text-xl">Next visit</h1>
                   <span className=" text-gray-400 text-md">
                     {/* {arr[0].next} */}
                     05/03/2024
-                    </span>
+                  </span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Status:</h1>
                   <span className=" text-gray-400 text-md">
                     {/* {arr[0].Staus} */}
                     Good
-                    </span>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
           <div className=" p-4 w-full border-2 border-black rounded-xl ">
-            <div className=" w-[20dh]"><PieChart /></div>
+            <div className=" w-[20dh]">
+              <PieChart />
+            </div>
           </div>
         </div>
       </div>

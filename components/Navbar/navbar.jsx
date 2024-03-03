@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { TbReport } from "react-icons/tb";
+import { UserButton } from "@clerk/nextjs";
 const Navbar = () => {
   return (
     <div
@@ -54,7 +55,7 @@ const Navbar = () => {
               Contact
             </Button>
           </Link>
-          <Link href={"/profile/3"}>
+          <Link href={"/profile"}>
             <Button
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
@@ -72,6 +73,7 @@ const Navbar = () => {
           </Button>
         </Link>
       </div>
+      <UserButton sign />
     </div>
   );
 };
