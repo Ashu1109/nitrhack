@@ -26,9 +26,21 @@ const schema = new mongoose.Schema({
   year: {
     type: Number,
   },
+  depression: {
+    type: Number,
+  },
+  anxiety: {
+    type: Number,
+  },
+  adhd: {
+    type: Number,
+  },
+  doctor: {
+    type: Number,
+  },
 });
 
 const Assessment =
-  mongoose.models.Assessment || mongoose.model("Assessment", schema);
+  mongoose.models.assessments || mongoose.model("assessments", schema);
 
 export default Assessment;

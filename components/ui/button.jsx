@@ -21,6 +21,7 @@ const buttonVariants = cva(
         link_plain: "text-slate-900 underline-offset-4 bg-blue-300",
         new_Button:
           "bg-blue-400 text-secondary-foreground hover:bg-secondary/80",
+
       },
       size: {
         default: "h-10 px-4 py-2",

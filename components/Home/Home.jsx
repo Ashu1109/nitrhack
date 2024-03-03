@@ -20,7 +20,7 @@ const Home = () => {
           HEALTH <span className={" font-extrabold"}>NOW</span>.
         </div>
         <div className={" flex gap-7 py-5 text-black"}>
-          <Link href={"/sign-in"}>
+          <Link href={"/features"}>
             <Button
               variant={"outline"}
               className=" text-lg text-white bg-sky-600 flex gap-2"
@@ -29,7 +29,7 @@ const Home = () => {
               Features
             </Button>
           </Link>
-          <Link href={"/sign-in"}>
+          <Link href={"/assessment"}>
             <Button
               variant={"outline"}
               className=" text-lg  bg-blue-100 flex gap-2"

@@ -13,13 +13,13 @@ const Navbar = () => {
         "  bg-[#2770e6] text-black  h-[10vh] flex justify-between items-center px-10"
       }
     >
-      <div className={" flex gap-3 text-slate-300 items-center text-xl "}>
+      <Link href={"/dashboard"} className={" flex gap-3 text-slate-300 items-center text-xl "}>
         <MdLocalHospital color="red" size={40} />
         Hack4Health
-      </div>
+      </Link>
       <div className={" flex gap-3 "}>
         <div className={"px-10 flex gap-2 "}>
-          <Link href={"/"}>
+          <Link href={"/dashboard"}>
             <Button
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
@@ -29,7 +29,7 @@ const Navbar = () => {
               <FaHome size={"20"} /> Home
             </Button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/About"}>
             <Button
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
@@ -51,19 +51,20 @@ const Navbar = () => {
               Contact
             </Button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/profile"}>
             <Button
+              
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
               }
               variant="new_Button"
             >
               <TbReport size={20} />
-              History
+              Profile
             </Button>
           </Link>
         </div>
-        <Link href={"/"}>
+        <Link href={"/appointment"}>
           <Button className={" uppercase"} variant="link_plain">
             Make Appointment
           </Button>
