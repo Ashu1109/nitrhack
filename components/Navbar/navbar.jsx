@@ -13,7 +13,10 @@ const Navbar = () => {
         "  bg-[#2770e6] text-black  h-[10vh] flex justify-between items-center px-10"
       }
     >
-      <Link href={"/dashboard"} className={" flex gap-3 text-slate-300 items-center text-xl "}>
+      <Link
+        href={"/dashboard"}
+        className={" flex gap-3 text-slate-300 items-center text-xl "}
+      >
         <MdLocalHospital color="red" size={40} />
         Hack4Health
       </Link>
@@ -40,7 +43,7 @@ const Navbar = () => {
               About
             </Button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/contact"}>
             <Button
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
@@ -51,9 +54,8 @@ const Navbar = () => {
               Contact
             </Button>
           </Link>
-          <Link href={"/profile"}>
+          <Link href={"/profile/3"}>
             <Button
-              
               className={
                 " flex justify-center items-center gap-2 text-white/60 hover:text-black"
               }

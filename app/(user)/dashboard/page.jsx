@@ -13,7 +13,6 @@ const page = () => {
       <Carosel />
       <Blog />
       <Footer />
-      <Test />
     </>
   );
 };

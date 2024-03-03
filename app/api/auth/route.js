@@ -15,7 +15,10 @@ export async function POST(req) {
     "cgpa": parseFloat(formData.cgpa),
     "year": parseInt(formData.year)
   }
-  const resp = await axios.post("https://ed59-157-41-250-77.ngrok-free.app/api/predict", arr);
+  const resp = await axios.post(
+    "https://b3ac-210-212-2-133.ngrok-free.app/api/predict",
+    arr
+  );
   console.log("resp:",resp.data)
   // console.log(arr)
   const assessment = new Assessment({

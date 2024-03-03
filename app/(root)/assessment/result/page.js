@@ -17,12 +17,26 @@ const Result = () => {
         // Update state with the retrieved results
         if (storedResults) {
             setAssessmentResults({
-                anxiety: storedResults.anxiety || 0,
-                depression: storedResults.depression || 0,
-                adhd: storedResults.adhd || 0,
-                // Add more categories as needed
+              anxiety:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[10]
+                    .split(":")[1]
+                ) || 0,
+              depression:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[9]
+                    .split(":")[1]
+                ) || 0,
+              adhd:
+                Number(
+                  JSON.parse(JSON.stringify(storedResults))
+                    .split(",")[11]
+                    .split(":")[1]
+                ) || 0,
             });
-            console.log(assessmentResults)
+            console.log(JSON.parse(JSON.stringify(storedResults)).split(","));
         }
         
     }, []);
