@@ -64,7 +64,7 @@ const Navbar = () => {
             </Button>
           </Link>
         </div>
-        <Link href={"/"}>
+        <Link href={"/appointment"}>
           <Button className={" uppercase"} variant="link_plain">
             Make Appointment
           </Button>
