@@ -1,45 +1,48 @@
+"use client"
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import img from './doctor.png'
 import DoctorList from './card'
+import axios from 'axios'
 
 const Appointment = () => {
+
     const doctorList = [{
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
     {
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
     {
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
     {
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
     {
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
     {
-        "Name":"Tarun Kumar",
-        "Year_of_Experience":"12",
-        "Address":"12,9/c,Bokaro",
-        "id":"1234",
+        "Name": "Tarun Kumar",
+        "Year_of_Experience": "12",
+        "Address": "12,9/c,Bokaro",
+        "id": "1234",
     },
 
     ]
