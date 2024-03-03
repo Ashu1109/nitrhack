@@ -39,5 +39,5 @@ export async function POST(req) {
   console.log("assessment :",assessment);
   const save = await assessment.save();
   console.log("save :",save);
-  return new Response(save, { status: 200 });
+  return new Response(assessment, { status: 200 });
 }
