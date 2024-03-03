@@ -7,81 +7,44 @@ import { IoMdHome } from "react-icons/io";
 import { FaFile } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PieChart from "./Piechart"
-const Profile = ({params}) => {
-  const {id}=params;
-    
+import axios from "axios";
+const Profile = ({ params }) => {
+  // const {id}=params;
+
   const [display, setDisplay] = useState(false);
-  
-  const arr = [
+  const [arr, setArr] = useState([
     {
-        "Name":"Sachin kumar",
-        "Phone":"7845961235",
-        "mail":"sachin@123.com",
-        "Address1":"Jamshedpur",
-        "Address2":"Jharkhand",
-        "Gender":"Male",
-        "Age":20,
-        "Semester":1,
-        "last":"28:02:2024",
-        "next":"2:03:2024",
-        "Staus":"Average"
-    },
-    {
-        "Name":"Sachin kumar",
-        "Phone":"7845961235",
-        "mail":"sachin@123.com",
-        "Address1":"Jamshedpur",
-        "Address2":"Jharkhand",
-        "Gender":"Male",
-        "Age":20,
-        "Semester":1,
-        "last":"28:02:2024",
-        "next":"2:03:2024",
-        "Staus":"Average"
-    },
-    {
-        "Name":"Sachin kumar",
-        "Phone":"7845961235",
-        "mail":"sachin@123.com",
-        "Address1":"Jamshedpur",
-        "Address2":"Jharkhand",
-        "Gender":"Male",
-        "Age":20,
-        "Semester":1,
-        "last":"28:02:2024",
-        "next":"2:03:2024",
-        "Staus":"Average"
-    },
-    {
-        "Name":"Sachin kumar",
-        "Phone":"7845961235",
-        "mail":"sachin@123.com",
-        "Address1":"Jamshedpur",
-        "Address2":"Jharkhand",
-        "Gender":"Male",
-        "Age":20,
-        "Semester":1,
-        "last":"28:02:2024",
-        "next":"2:03:2024",
-        "Staus":"Average"
-    },
-    {
-        "Name":"Sachin kumar",
-        "Phone":"7845961235",
-        "mail":"sachin@123.com",
-        "Address1":"Jamshedpur",
-        "Address2":"Jharkhand",
-        "Gender":"Male",
-        "Age":20,
-        "Semester":1,
-        "last":"28:02:2024",
-        "next":"2:03:2024",
-        "Staus":"Average"
-    },
-  ]
-  
+      "firstName": "Sachin",
+      "lastName": "kumar",
+      "phone": "7845961235",
+      "mail": "sachin@123.com",
+      "Address1": "Jamshedpur",
+      "Address2": "Jharkhand",
+      "gender": "Male",
+      "age": 20,
+      "year": 1,
+      "last": "28:02:2024",
+      "next": "2:03:2024",
+      "Staus": "Average"
+    }
+  ])
+
+  useEffect(() => {
+    const get = async () => {
+      try {
+        const data = await axios.get("/api/getuser");
+        setArr(data.data.data.reverse())
+
+        console.log(arr,data)
+      } catch (error) {
+        console.log(error);
+      }
+
+    };
+    get();
+  },[])
   if (display) {
     return (
       <div className=" h-[100dvh] flex-col bg-gradient-to-r flex gap-3  from-cyan-400 to-emerald-500">
@@ -101,7 +64,7 @@ const Profile = ({params}) => {
           </button>
         </div>
         <div className=" pt-4 pl-2">
-          
+
         </div>
       </div>
     );
@@ -121,29 +84,33 @@ const Profile = ({params}) => {
                 width={100}
                 height={100}
               />
-              <h1 className="text-3xl font-bold">{arr[id].Name}</h1>
+              <h1 className="text-3xl font-bold">{`${arr[0].firstName} ${arr[0].lastName}`}</h1>
             </div>
             <h1 className="text-xl pt-4 font-bold">Contact details :</h1>
             <div className="flex pt-1 items-center gap-3">
               <FaPhone className="text-2xl text-cyan-400" />
               <h1 className="text-xl font-semibold text-gray-400">
-              {arr[id].Phone}
+                {/* {arr[0].phone} */}
+                7845961235
               </h1>
             </div>
             <div className="flex pt-1 items-center gap-3">
               <HiOutlineMail className=" text-2xl font-extrabold text-cyan-400" />
               <h1 className="text-xl font-semibold text-gray-400">
-              {arr[id].mail}
+                {/* {arr[0].mail} */}
+                aayushkumarhigh@gmail.com
               </h1>
             </div>
             <div className="flex pt-1 items-center gap-3">
               <IoMdHome className=" text-2xl font-extrabold text-cyan-400" />
               <div className="flex flex-col">
                 <h1 className="text-xl font-semibold text-gray-400">
-                {arr[id].Address1}
+                  {/* {arr[0].Address1} */}
+                  Jamshedpur
                 </h1>
                 <h1 className="text-xl font-semibold text-gray-400">
-                {arr[id].Address2}
+                  {/* {arr[0].Address2} */}
+                  Jamshedpur
                 </h1>
               </div>
             </div>
@@ -159,7 +126,7 @@ const Profile = ({params}) => {
               <h1 className="text-xl font-semibold text-gray-800">test2.pdf</h1>
             </div>
             <div className="flex pt-4 items-center gap-3">
-              
+
               <button
                 type="button"
                 onClick={() => setDisplay(true)}
@@ -177,29 +144,38 @@ const Profile = ({params}) => {
               <div className="flex justify-between w-full items-center">
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Gender:</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].Gender}</span>
+                  <span className=" text-gray-400 text-md">{arr[0].gender}</span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Age:</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].Age}</span>
+                  <span className=" text-gray-400 text-md">{arr[0].age}</span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Semester:</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].Semester} </span>
+                  <span className=" text-gray-400 text-md">{arr[0].year} </span>
                 </div>
               </div>
               <div className="flex justify-between w-full items-center">
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Last visit</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].last}</span>
+                  <span className=" text-gray-400 text-md">
+                    {/* {arr[0].last} */}
+                    02/03/2024
+                    </span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className="text-gray-800 text-xl">Next visit</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].next}</span>
+                  <span className=" text-gray-400 text-md">
+                    {/* {arr[0].next} */}
+                    05/03/2024
+                    </span>
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Status:</h1>
-                  <span className=" text-gray-400 text-md">{arr[id].Staus}</span>
+                  <span className=" text-gray-400 text-md">
+                    {/* {arr[0].Staus} */}
+                    Good
+                    </span>
                 </div>
               </div>
             </div>

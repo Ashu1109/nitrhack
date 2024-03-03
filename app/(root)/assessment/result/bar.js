@@ -2,6 +2,7 @@ import React from 'react';
 
 
 const ProgressBar = ({ percentage, title }) => {
+    // console.log(percentage," ",title)
     return (
         <div className="relative pt-1 w-[70vw]">
             <div className="flex mb-2 items-center justify-between">
@@ -12,7 +13,7 @@ const ProgressBar = ({ percentage, title }) => {
                 </div>
                 <div className="text-right">
                     <span className="text-xs font-semibold inline-block text-teal-600">
-                        {percentage}%
+                        {parseFloat(percentage).toFixed(2)}%
                     </span>
                 </div>
             </div>

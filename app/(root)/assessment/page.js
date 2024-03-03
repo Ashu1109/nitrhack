@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import img from "../../assets/doctor1.png";
 import { useRouter } from "next/navigation"
-
 const Page = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,7 +15,7 @@ const Page = () => {
     cgpa: "",
     gender: "",
   });
-
+  const router = useRouter();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -26,16 +24,19 @@ const Page = () => {
     e.preventDefault();
     try {
       const data = await axios.post("/api/auth", { formData });
+      const save = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify((data.data)))))
       console.log("data :", data.data);
-
-      // Save data.data to local storage
-      localStorage.setItem('testResult', JSON.stringify(data.data));
+      // console.log((save.split(",")[10]).split(":")[1])
+      localStorage.setItem('anxiety', JSON.stringify((save.split(",")[10]).split(":")[1]));
+      localStorage.setItem('depression', JSON.stringify((save.split(",")[9]).split(":")[1]));
+      localStorage.setItem('adhd', JSON.stringify((save.split(",")[11]).split(":")[1]));
+      localStorage.setItem('doctor', JSON.stringify((save.split(",")[12]).split(":")[1]));
+      // const data1=JSON.parse(data.data);
       router.push(`/assessment/result`);
-      // You can also navigate to another page or perform other actions here
-
     } catch (error) {
       console.log(error);
     }
+
   };
 
   return (
