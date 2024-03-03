@@ -11,7 +11,8 @@ export default authMiddleware({
     "/dashboard",
     "/assessment",
     "/appointment",
-    "/assessment/result"
+    "/assessment/result",
+ 
   ],
 });
 
