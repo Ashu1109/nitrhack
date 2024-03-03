@@ -1,9 +1,12 @@
 "use client"
-import React from 'react'
-import { useState, useEffect } from 'react';
-import img from '../../assets/doctor1.png'
-import Image from 'next/image';
+import axios from "axios";
+import Image from "next/image";
+import { useState } from "react";
+import img from "../../assets/doctor1.png";
+import { useRouter } from "next/navigation"
+
 const Page = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,22 +24,18 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    try {
+      const data = await axios.post("/api/auth", { formData });
+      console.log("data :", data.data);
 
-    // Assuming you have a backend endpoint to handle form submissions
-    // const response = await fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(formData),
-    // });
+      // Save data.data to local storage
+      localStorage.setItem('testResult', JSON.stringify(data.data));
+      router.push(`/assessment/result`);
+      // You can also navigate to another page or perform other actions here
 
-    // // Handle the response as needed
-    // if (response.ok) {
-    //     console.log('Form submitted successfully!');
-    // } else {
-    //     console.error('Form submission failed.');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -49,56 +48,6 @@ const Page = () => {
         <div className="w-[27vw] bg-gradient-to-r from-indigo-800 to-fuchsia-500 h-[100%] rounded-l-[30px] ">
           <Image src={img} width={500} height={500}></Image>
         </div>
-        {/* <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-                            Name
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="mt-1 p-2 w-full border rounded-md"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="mt-1 p-2 w-full border rounded-md"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-600">
-                            Message
-                        </label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows="4"
-                            className="mt-1 p-2 w-full border rounded-md"
-                            required
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                    >
-                        Submit
-                    </button>
-                </form> */}
 
         <form
           className="max-w-[30vw]  mx-auto pt-[5vh] pb-[5vh]"
@@ -157,6 +106,8 @@ const Page = () => {
             <input
               type="number"
               name="familyIncome"
+              value={formData.name}
+              onChange={handleChange}
               id="floating_email"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
