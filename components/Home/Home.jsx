@@ -20,7 +20,7 @@ const Home = () => {
           HEALTH <span className={" font-extrabold"}>NOW</span>.
         </div>
         <div className={" flex gap-7 py-5 text-black"}>
-          <Link href={"/features"}>
+          {/* <Link href={"/features"}>
             <Button
               variant={"outline"}
               className=" text-lg text-white bg-sky-600 flex gap-2"
@@ -28,7 +28,7 @@ const Home = () => {
               <FaBrain />
               Features
             </Button>
-          </Link>
+          </Link> */}
           <Link href={"/assessment"}>
             <Button
               variant={"outline"}
