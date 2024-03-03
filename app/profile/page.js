@@ -111,13 +111,13 @@ const Profile = ({ params }) => {
               <h1 className="text-3xl font-bold">{`${arr[0].firstName} ${arr[0].lastName}`}</h1>
             </div>
             <h1 className="text-xl pt-4 font-bold">Contact details :</h1>
-            <div className="flex pt-1 items-center gap-3">
-              <FaPhone className="text-2xl text-cyan-400" />
-              <h1 className="text-xl font-semibold text-gray-400">
+            {/* <div className="flex pt-1 items-center gap-3"> */}
+              {/* <FaPhone className="text-2xl text-cyan-400" /> */}
+              {/* <h1 className="text-xl font-semibold text-gray-400"> */}
                 {/* {arr[0].phone} */}
-                7845961235
-              </h1>
-            </div>
+                {/* 7845961235 */}
+              {/* </h1> */}
+            {/* </div> */}
             <div className="flex pt-1 items-center gap-3">
               <HiOutlineMail className=" text-2xl font-extrabold text-cyan-400" />
               <h1 className="text-xl font-semibold text-gray-400">
@@ -139,27 +139,30 @@ const Profile = ({ params }) => {
               </div>
             </div>
           </div>
-          <div className=" p-4 border-2 border-black rounded-xl ">
-            <h1 className="text-3xl pb-2 pt-4 font-bold">Latest results : </h1>
-            <div className="flex pt-1 items-center gap-3">
-              <FaFile className="text-2xl text-cyan-400" />
-              <h1 className="text-xl font-semibold text-gray-800">test.pdf</h1>
-            </div>
-            <div className="flex pt-1 items-center gap-3">
-              <FaFile className="text-2xl text-cyan-400" />
-              <h1 className="text-xl font-semibold text-gray-800">test2.pdf</h1>
-            </div>
-            <div className="flex pt-4 items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setDisplay(true)}
-                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-              >
-                View All
-              </button>
-            </div>
-          </div>
-        </div>
+
+           {/* <div className=" p-4 border-2 border-black rounded-xl "> */}
+            {/* <h1 className="text-3xl pb-2 pt-4 font-bold">Latest results : </h1> */}
+            {/* <div className="flex pt-1 items-center gap-3"> */}
+              {/* <FaFile className="text-2xl text-cyan-400" /> */}
+              {/* <h1 className="text-xl font-semibold text-gray-800">test.pdf</h1> */}
+            {/* </div> */}
+            {/* <div className="flex pt-1 items-center gap-3"> */}
+              {/* <FaFile className="text-2xl text-cyan-400" /> */}
+              {/* <h1 className="text-xl font-semibold text-gray-800">test2.pdf</h1> */}
+            {/* </div> */}
+            {/* <div className="flex pt-4 items-center gap-3"> */}
+
+              {/* <button */}
+                {/* type="button" */}
+                {/* onClick={() => setDisplay(true)} */}
+                {/* className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" */}
+              {/* > */}
+                {/* View All */}
+              {/* </button> */}
+            {/* </div> */}
+          {/* </div> */}
+        </div> 
+
         <div className="flex w-full p-4 flex-col gap-2 ">
           <div className=" p-4 w-full border-2 border-black rounded-xl ">
             <h1 className="text-xl pt-4 font-bold">Overview :</h1>
@@ -176,7 +179,7 @@ const Profile = ({ params }) => {
                   <span className=" text-gray-400 text-md">{arr[0].age}</span>
                 </div>
                 <div className="flex flex-col">
-                  <h1 className=" text-gray-800 text-xl">Semester:</h1>
+                  <h1 className=" text-gray-800 text-xl">Year</h1>
                   <span className=" text-gray-400 text-md">{arr[0].year} </span>
                 </div>
               </div>
@@ -197,10 +200,14 @@ const Profile = ({ params }) => {
                 </div>
                 <div className="flex flex-col">
                   <h1 className=" text-gray-800 text-xl">Status:</h1>
-                  <span className=" text-gray-400 text-md">
+                  
                     {/* {arr[0].Staus} */}
-                    Good
-                  </span>
+
+
+                    {arr[0].doctor < 40 && <span className=" text-green-500  text-md">Good</span>}
+                    {arr[0].doctor <=65 && arr[0].doctor >= 40 && <span className=" text-yellow-500  text-md">average</span>}  
+                    {arr[0].doctor >=65 && <span className=" text-red-500  text-md">Severe</span>}
+
                 </div>
               </div>
             </div>
