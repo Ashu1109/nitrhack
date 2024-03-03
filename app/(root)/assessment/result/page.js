@@ -4,10 +4,10 @@ import ProgressBar from './bar';
 
 const Result = () => {
     const [assessmentResults, setAssessmentResults] = useState({
-      anxiety: 0,
-      depression: 0,
-      adhd: 0,
-      // Add more categories as needed
+        anxiety: 0,
+        depression: 0,
+        adhd: 0,
+        // Add more categories as needed
     });
 
     useEffect(() => {
@@ -55,43 +55,41 @@ const Result = () => {
 
 
     return (
-      <div className="flex justify-center items-center">
-        <div className="flex flex-col items-center justify-center w-[70vw] h-[70vh]">
-          <h1 className="text-4xl font-semibold mb-6">Assessment Report</h1>
+        <div className="flex justify-center items-center">
+            <div className="flex flex-col items-center justify-center w-[70vw] h-[70vh]">
+                <h1 className="text-4xl font-semibold mb-6">Assessment Report</h1>
 
-          <div className="flex flex-col justify-center items-center">
-            {/* Progress Bar 1 */}
-            <ProgressBar
-              title="Anxiety"
-              percentage={assessmentResults.anxiety}
-              color="bg-blue-500"
-            />
+                <div className="flex flex-col justify-center items-center">
+                    {/* Progress Bar 1 */}
+                    <ProgressBar
+                        title="Anxiety"
+                        percentage={assessmentResults.anxiety}
+                        color="bg-blue-500"
+                    />
 
-            {/* Progress Bar 2 */}
-            <ProgressBar
-              title="Depression"
-              percentage={assessmentResults.depression}
-              color="bg-green-500"
-            />
+                    {/* Progress Bar 2 */}
+                    <ProgressBar
+                        title="Depression"
+                        percentage={assessmentResults.depression}
+                        color="bg-green-500"
+                    />
 
 
-            {/* Progress Bar 3 */}
-            <ProgressBar
-              title="ADHD"
-              percentage={assessmentResults.adhd}
-              color="bg-orange-500"
-            />
-
-            {/* Add more Progress Bars as needed */}
-          </div>
+                    {/* Progress Bar 3 */}
+                    <ProgressBar
+                        title="ADHD"
+                        percentage={assessmentResults.adhd}
+                        color="bg-orange-500"
+                    />
 
                     {/* Add more Progress Bars as needed */}
                 </div>
-                {(parseInt(doctor) > 50) && <div className='text-teal-600 text-4xl mt-14 font-bold'>It is advised to visit a doctor asap.</div>}
-            </div>
 
+                {/* Add more Progress Bars as needed */}
+            </div>
+            {(parseInt(doctor) > 50) && <div className='text-teal-600 text-4xl mt-14 font-bold'>It is advised to visit a doctor asap.</div>}
         </div>
-      </div>
+
     );
 }
 
