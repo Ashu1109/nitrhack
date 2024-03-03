@@ -15,32 +15,41 @@ const Result = () => {
         const data2 = JSON.parse(localStorage.getItem('depression'));
         const data3 = JSON.parse(localStorage.getItem('adhd'));
         const data4 = JSON.parse(localStorage.getItem('doctor'));
-        // Update state with the retrieved results
-        if (storedResults) {
-            setAssessmentResults({
-              anxiety:
-                Number(
-                  JSON.parse(JSON.stringify(storedResults))
-                    .split(",")[10]
-                    .split(":")[1]
-                ) || 0,
-              depression:
-                Number(
-                  JSON.parse(JSON.stringify(storedResults))
-                    .split(",")[9]
-                    .split(":")[1]
-                ) || 0,
-              adhd:
-                Number(
-                  JSON.parse(JSON.stringify(storedResults))
-                    .split(",")[11]
-                    .split(":")[1]
-                ) || 0,
-            });
-            console.log(JSON.parse(JSON.stringify(storedResults)).split(","));
-        }
-        
-    }, []);
+
+        setAnxiety(data1);
+        setDepression(data2);
+        setAdhd(data3);
+        setDoctor(data4);
+        setLoad(1)
+
+
+    }, [load]);
+    // Update state with the retrieved results
+    // if (storedResults) {
+    // setAssessmentResults({
+    //     anxiety:
+    //         Number(
+    //             JSON.parse(JSON.stringify(storedResults))
+    //                 .split(",")[10]
+    //                 .split(":")[1]
+    //         ) || 0,
+    //     depression:
+    //         Number(
+    //             JSON.parse(JSON.stringify(storedResults))
+    //                 .split(",")[9]
+    //                 .split(":")[1]
+    //         ) || 0,
+    //     adhd:
+    //         Number(
+    //             JSON.parse(JSON.stringify(storedResults))
+    //                 .split(",")[11]
+    //                 .split(":")[1]
+    //         ) || 0,
+    // });
+    // console.log(JSON.parse(JSON.stringify(storedResults)).split(","));
+    // }
+
+    // }, []);
 
     return (
         <div className='flex justify-center items-center'>
@@ -60,7 +69,7 @@ const Result = () => {
 
                     {/* Add more Progress Bars as needed */}
                 </div>
-                {(parseInt(doctor)>50) && <div className='text-teal-600 text-4xl mt-14 font-bold'>It is advised to visit a doctor asap.</div>}
+                {(parseInt(doctor) > 50) && <div className='text-teal-600 text-4xl mt-14 font-bold'>It is advised to visit a doctor asap.</div>}
             </div>
         </div>
     );
