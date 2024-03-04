@@ -16,7 +16,7 @@ export async function POST(req) {
     "year": parseInt(formData.year)
   }
   const resp = await axios.post(
-    "https://077a-14-139-208-85.ngrok-free.app/api/predict",
+    "https://humble-sculpin-fair.ngrok-free.app/api/predict",
     arr
   );
   console.log("resp:",resp.data)
