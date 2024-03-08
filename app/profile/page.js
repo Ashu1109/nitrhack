@@ -12,20 +12,20 @@ import PieChart from "./Piechart"
       import { UserProfile } from "@clerk/nextjs";
 
       import axios from "axios";
-      import { WorkflowExecutor } from "@io-orkes/conductor-javascript";
-      import {
-        OrkesApiConfig,
-        orkesConductorClient,
-      } from "@io-orkes/conductor-javascript";
+      // import { WorkflowExecutor } from "@io-orkes/conductor-javascript";
+      // import {
+      //   OrkesApiConfig,
+      //   orkesConductorClient,
+      // } from "@io-orkes/conductor-javascript";
 
-      const config = {
-        keyId: "de70c6bb-b56e-4790-99ae-29009750dbd8", // optional
-        keySecret: "zceoDIjzsjtpMWESupsOMv80B0VFBGGADsn052uHuxUAcSY1", // optional
-        refreshTokenInterval: 0, // optional (in milliseconds) defaults to 30 minutes (30 * 60 * 1000). 0 no refresh
-        serverUrl: "https://play.orkes.io/api",
-      };
+      // const config = {
+      //   keyId: "de70c6bb-b56e-4790-99ae-29009750dbd8", // optional
+      //   keySecret: "zceoDIjzsjtpMWESupsOMv80B0VFBGGADsn052uHuxUAcSY1", // optional
+      //   refreshTokenInterval: 0, // optional (in milliseconds) defaults to 30 minutes (30 * 60 * 1000). 0 no refresh
+      //   serverUrl: "https://play.orkes.io/api",
+      // };
 
-      const clientPromise = orkesConductorClient(config);
+      // const clientPromise = orkesConductorClient(config);
 
       const Profile = ({ params }) => {
         const data = async () => {
@@ -55,19 +55,19 @@ import PieChart from "./Piechart"
           },
         ]);
 
-        // useEffect(() => {
-        //   const get = async () => {
-        //     try {
-        //       const data = await axios.get("/api/getuser");
-        //       setArr(data.data.data.reverse());
-
-        //       console.log(arr, data);
-        //     } catch (error) {
-        //       console.log(error);
-        //     }
-        //   };
-        //   get();
-        // }, []);
+        useEffect(() => {
+          const get = async () => {
+            try {
+              const data = await axios.get("/api/getuser");
+              setArr(data.data.data.reverse());
+              console.log(data);
+              console.log(arr, data);
+            } catch (error) {
+              console.log(error);
+            }
+          };
+          get();
+        }, []);
         useEffect(() => {
           data()
             .then((res) => setArr(res.data.data))
